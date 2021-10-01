@@ -1,39 +1,21 @@
 <template>
-  <swiper
-    :slides-per-view="3"
-    :space-between="50"
-    @swiper="onSwiper"
-    @slideChange="onSlideChange"
-  >
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    ...
-  </swiper>
+  <div class="flex flex-col sm:flex-row bg-yellow-200 dark:bg-yellow-800">
+    <navbar class="sm:w-1/4 h-14 sm:h-screen bg-green-200" />
+    <!-- <content class="h-screen sm:w-3/4"></content> -->
+    <home-content />
+  </div>
 </template>
+
 <script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
-import "swiper/css";
-
+import Navbar from "@/components/navbar.vue";
+import HomeContent from "../components/HomeContent.vue";
 export default {
   components: {
-    Swiper,
-    SwiperSlide,
-  },
-  setup() {
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log("slide change");
-    };
-    return {
-      onSwiper,
-      onSlideChange,
-    };
+    Navbar,
+    HomeContent,
   },
 };
 </script>
+
+<style lang="scss" scoped>
+</style>
