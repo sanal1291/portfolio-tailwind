@@ -1,5 +1,12 @@
 <template>
-  <carousel class="carousel relative" v-slot="{ currentSlide }">
+  <carousel
+    class="carousel relative"
+    v-slot="{ currentSlide }"
+    :pagination="true"
+    :navigation="true"
+    :autoPlayOn="true"
+    :timeOut="1000"
+  >
     <slide
       class="slide absolute top-0 left-0"
       v-for="(slide, index) in carouselSlides"
@@ -24,13 +31,13 @@ export default {
     Slide,
   },
   setup() {
-    const carouselSlides = ref([
+    const carouselSlides = [
       { img: "bg-1.jpg", time: 1000 },
       { img: "bg-2.jpg", time: 1000 },
       { img: "bg-3.jpg", time: 1000 },
       { img: "bg-4.png", time: 1000 },
       { img: "bg-5.jpg", time: 1000 },
-    ]);
+    ];
     return { carouselSlides };
   },
 };
