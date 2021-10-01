@@ -5,16 +5,10 @@
 </template>
 
 <script>
-import { onMounted } from "@vue/runtime-core";
 export default {
   props: ["slide"],
+  // eslint-disable-next-line no-unused-vars
   setup(props, { emit }) {
-    onMounted(() => {
-      setTimeout(() => {
-        console.log("timeoutfn");
-        emit("shownext", props.slide.id);
-      }, props.slide.time);
-    });
     return {};
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot v-bind:nextSlideAuto="nextSlideAuto" :currentSlide="currentSlide" />
+    <slot :currentSlide="currentSlide" />
 
     <!-- navigation optional-->
     <div class="navigation" v-if="navigationEnabled">
@@ -28,11 +28,18 @@
 <script>
 /* eslint-disable no-unused-vars */
 import { ref } from "@vue/reactivity";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 export default {
-  props: ["navigation", "pagination", "autoPlayOn", "timeOut", "routeTo"],
+  props: [
+    "navigation",
+    "pagination",
+    "autoPlayOn",
+    "timeOut",
+    "routeTo",
+    "carouselSlides",
+  ],
   setup(props) {
-    const currentSlide = ref(1);
+    const currentSlide = ref(0);
     const getSlideCount = ref(null);
     const autoPlayEnabled = ref(
       props.autoPlayOn === undefined ? true : props.autoPlayOn
@@ -53,22 +60,6 @@ export default {
         return;
       }
       currentSlide.value += 1;
-    };
-
-    const nextSlideAuto = (id) => {
-      if (
-        currentSlide.value === id &&
-        autoPlayEnabled.value &&
-        !timeoutDuration.value
-      ) {
-        if (currentSlide.value === getSlideCount.value) {
-          //in future go to home
-
-          return;
-        }
-        console.log("custom time");
-        currentSlide.value += 1;
-      }
     };
 
     const preSlide = () => {
@@ -94,10 +85,25 @@ export default {
         autoPlay();
       }
     }
-
+    watch(currentSlide, (n, o) => {
+      let index = n;
+      if (autoPlayEnabled.value && !timeoutDuration.value) {
+        console.log(props.carouselSlides[n - 1].time);
+        setTimeout(() => {
+          if (index === currentSlide.value) {
+            if (currentSlide.value == getSlideCount.value) {
+              // go to home
+              return;
+            }
+            currentSlide.value += 1;
+          }
+        }, props.carouselSlides[n - 1].time ?? 2000);
+      }
+    });
     onMounted(() => {
       getSlideCount.value =
         document.getElementsByClassName("slide-parent").length;
+      currentSlide.value = 1;
     });
     return {
       currentSlide,
@@ -107,7 +113,6 @@ export default {
       goToSlide,
       paginationEnabled,
       navigationEnabled,
-      nextSlideAuto,
     };
   },
 };

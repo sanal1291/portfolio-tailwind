@@ -1,7 +1,8 @@
 <template>
   <carousel
     class="carousel relative h-screen w-screen"
-    v-slot="{ currentSlide, nextSlideAuto }"
+    v-slot="{ currentSlide }"
+    :carouselSlides="carouselSlides"
     :pagination="true"
     :navigation="true"
     :autoPlayOn="true"
@@ -12,12 +13,7 @@
       v-for="slide in carouselSlides"
       :key="slide.id"
     >
-      <slide
-        @shownext="nextSlideAuto"
-        :slide="slide"
-        :id="slide.id"
-        class="w-full h-full"
-      >
+      <slide :slide="slide" :id="slide.id" class="w-full h-full">
         <div v-if="currentSlide === slide.id" class="slide w-full h-full">
           <img
             class="w-full h-full object-cover"
@@ -43,11 +39,11 @@ export default {
   },
   setup() {
     const carouselSlides = [
-      { id: 1, img: "bg-1.jpg", time: 2000 },
-      { id: 2, img: "bg-2.jpg", time: 2000 },
-      { id: 3, img: "bg-3.jpg", time: 2000 },
-      { id: 4, img: "bg-4.png", time: 2000 },
-      { id: 5, img: "bg-5.jpg", time: 2000 },
+      { id: 1, img: "bg-1.jpg" },
+      { id: 2, img: "bg-2.jpg", time: 4000 },
+      { id: 3, img: "bg-3.jpg", time: 6000 },
+      { id: 4, img: "bg-4.png" },
+      { id: 5, img: "bg-5.jpg" },
     ];
     return { carouselSlides, print };
   },
