@@ -1,9 +1,9 @@
 <template>
   <div>
-    <slot :currentSlide="currentSlide" />
+    <slot v-bind:nextSlideAuto="nextSlideAuto" :currentSlide="currentSlide" />
 
     <!-- navigation optional-->
-    <div class="navigation">
+    <div class="navigation" v-if="navigationEnabled">
       <div class="toggle-page left">
         <i @click="preSlide" class="fas fa-chevron-left"></i>
       </div>
@@ -13,7 +13,7 @@
     </div>
 
     <!-- pagination optional  -->
-    <div class="pagination">
+    <div class="pagination" v-if="paginationEnabled">
       <span
         @click="goToSlide(index)"
         v-for="(item, index) in getSlideCount"
@@ -26,17 +26,20 @@
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
 import { ref } from "@vue/reactivity";
 import { onMounted } from "vue";
 export default {
-  props: ["navigation", "pagination", "autoPlayOn", "timeOut"],
+  props: ["navigation", "pagination", "autoPlayOn", "timeOut", "routeTo"],
   setup(props) {
     const currentSlide = ref(1);
     const getSlideCount = ref(null);
     const autoPlayEnabled = ref(
       props.autoPlayOn === undefined ? true : props.autoPlayOn
     );
-    const timeoutDuration = ref(1000);
+    const timeoutDuration = ref(
+      props.timeOut != undefined ? props.timeOut : false
+    );
     const paginationEnabled = ref(
       props.pagination === undefined ? true : props.pagination
     );
@@ -52,6 +55,22 @@ export default {
       currentSlide.value += 1;
     };
 
+    const nextSlideAuto = (id) => {
+      if (
+        currentSlide.value === id &&
+        autoPlayEnabled.value &&
+        !timeoutDuration.value
+      ) {
+        if (currentSlide.value === getSlideCount.value) {
+          //in future go to home
+
+          return;
+        }
+        console.log("custom time");
+        currentSlide.value += 1;
+      }
+    };
+
     const preSlide = () => {
       if (currentSlide.value === 1) {
         currentSlide.value = 1;
@@ -65,16 +84,20 @@ export default {
     };
 
     const autoPlay = () => {
+      console.log("const time");
       setInterval(() => {
         nextSlide();
       }, timeoutDuration.value);
     };
     if (autoPlayEnabled.value) {
-      autoPlay();
+      if (timeoutDuration.value) {
+        autoPlay();
+      }
     }
 
     onMounted(() => {
-      getSlideCount.value = document.getElementsByClassName("slide").length;
+      getSlideCount.value =
+        document.getElementsByClassName("slide-parent").length;
     });
     return {
       currentSlide,
@@ -84,6 +107,7 @@ export default {
       goToSlide,
       paginationEnabled,
       navigationEnabled,
+      nextSlideAuto,
     };
   },
 };

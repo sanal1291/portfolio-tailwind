@@ -1,21 +1,26 @@
 <template>
   <carousel
-    class="carousel relative"
-    v-slot="{ currentSlide }"
+    class="carousel relative h-screen w-screen"
+    v-slot="{ currentSlide, nextSlideAuto }"
     :pagination="true"
     :navigation="true"
     :autoPlayOn="true"
-    :timeOut="1000"
+    routeTo="/home"
   >
-    <slide
-      class="slide absolute top-0 left-0"
-      v-for="(slide, index) in carouselSlides"
-      :key="index"
+    <div
+      class="slide-parent absolute top-0 left-0 w-full h-full max-h-full"
+      v-for="slide in carouselSlides"
+      :key="slide.id"
     >
-      <div class="" v-show="currentSlide === index + 1">
-        <img :src="require(`../assets/${slide.img}`)" :alt="index" />
-      </div>
-    </slide>
+      <slide
+        @shownext="nextSlideAuto"
+        class="slide object-cover w-full h-full"
+        v-if="currentSlide === slide.id"
+        :slide="slide"
+      >
+        <img :src="require(`../assets/${slide.img}`)" :alt="slide.id" />
+      </slide>
+    </div>
   </carousel>
 </template>
 
@@ -32,35 +37,24 @@ export default {
   },
   setup() {
     const carouselSlides = [
-      { img: "bg-1.jpg", time: 1000 },
-      { img: "bg-2.jpg", time: 1000 },
-      { img: "bg-3.jpg", time: 1000 },
-      { img: "bg-4.png", time: 1000 },
-      { img: "bg-5.jpg", time: 1000 },
+      { id: 1, img: "bg-1.jpg", time: 3000 },
+      { id: 2, img: "bg-2.jpg", time: 2000 },
+      { id: 3, img: "bg-3.jpg", time: 2000 },
+      { id: 4, img: "bg-4.png", time: 2000 },
+      { id: 5, img: "bg-5.jpg", time: 2000 },
     ];
-    return { carouselSlides };
+    const print = () => {
+      console.log("hello");
+    };
+    return { carouselSlides, print };
   },
 };
 </script>
 
 <style lang="scss" >
 .carousel {
-  max-height: 100vh;
-  height: 100vh;
-
-  .slide {
-    width: 100%;
-    height: 100%;
+  .slide-parent {
     max-height: 100%;
-
-    div {
-      height: 100%;
-      img {
-        min-width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
   }
 }
 </style>

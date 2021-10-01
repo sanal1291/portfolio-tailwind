@@ -1,17 +1,18 @@
 <template>
-  <div>
-    <transition name="slide">
-      <slot />
-    </transition>
-  </div>
+  <transition name="slide">
+    <slot />
+  </transition>
 </template>
 
 <script>
 import { onMounted } from "@vue/runtime-core";
 export default {
-  setup() {
+  props: ["slide"],
+  setup(props, { emit }) {
     onMounted(() => {
-      console.log("hi");
+      setTimeout(() => {
+        emit("shownext", props.slide.id);
+      }, props.slide.time);
     });
     return {};
   },
@@ -29,6 +30,6 @@ export default {
 }
 .slide-enter-active,
 .slide-leave-active {
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
 }
 </style>
