@@ -14,11 +14,17 @@
     >
       <slide
         @shownext="nextSlideAuto"
-        class="slide object-cover w-full h-full"
-        v-if="currentSlide === slide.id"
         :slide="slide"
+        :id="slide.id"
+        class="w-full h-full"
       >
-        <img :src="require(`../assets/${slide.img}`)" :alt="slide.id" />
+        <div v-if="currentSlide === slide.id" class="slide w-full h-full">
+          <img
+            class="w-full h-full object-cover"
+            :src="require(`../assets/${slide.img}`)"
+            :alt="slide.id"
+          />
+        </div>
       </slide>
     </div>
   </carousel>
@@ -37,15 +43,12 @@ export default {
   },
   setup() {
     const carouselSlides = [
-      { id: 1, img: "bg-1.jpg", time: 3000 },
+      { id: 1, img: "bg-1.jpg", time: 2000 },
       { id: 2, img: "bg-2.jpg", time: 2000 },
       { id: 3, img: "bg-3.jpg", time: 2000 },
       { id: 4, img: "bg-4.png", time: 2000 },
       { id: 5, img: "bg-5.jpg", time: 2000 },
     ];
-    const print = () => {
-      console.log("hello");
-    };
     return { carouselSlides, print };
   },
 };

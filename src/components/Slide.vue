@@ -1,7 +1,7 @@
 <template>
-  <transition name="slide">
-    <slot />
-  </transition>
+  <div>
+    <transition name="slide"> <slot /> </transition>
+  </div>
 </template>
 
 <script>
@@ -11,6 +11,7 @@ export default {
   setup(props, { emit }) {
     onMounted(() => {
       setTimeout(() => {
+        console.log("timeoutfn");
         emit("shownext", props.slide.id);
       }, props.slide.time);
     });
@@ -20,6 +21,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.slide {
+  div {
+    transition: all 0.2s ease-in-out;
+  }
+}
 .slide-enter-from,
 .slide-leave-to {
   opacity: 0;
@@ -30,6 +36,6 @@ export default {
 }
 .slide-enter-active,
 .slide-leave-active {
-  transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 </style>
