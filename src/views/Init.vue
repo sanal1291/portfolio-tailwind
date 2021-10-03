@@ -14,11 +14,8 @@
       :key="slide.id"
     >
       <slide :slide="slide" :id="slide.id" class="w-full h-full">
-        <div
-          v-if="currentSlide != 0 && currentSlide === slide.id"
-          class="slide w-full h-full"
-        >
-          <div class="w-full h-full" v-if="cuurentSlide == 0">loading</div>
+        <div v-if="currentSlide === slide.id" class="slide w-full h-full">
+          <loading v-if="currentSlide == 0"></loading>
           <img
             v-else
             class="w-full h-full object-cover"
@@ -37,18 +34,20 @@
 import { ref } from "@vue/reactivity";
 import Carousel from "../components/Carousel.vue";
 import Slide from "../components/Slide.vue";
+import Loading from "../components/loading.vue";
 export default {
   components: {
     Carousel,
     Slide,
+    Loading,
   },
   setup() {
     const carouselSlides = [
       { id: 0 },
-      { id: 1, img: "a.webp", time: 1000 },
-      { id: 2, img: "b.webp", time: 1000 },
-      { id: 3, img: "c.webp", time: 1000 },
-      { id: 4, img: "d.webp", time: 800 },
+      { id: 1, img: "a.webp", time: 2000 },
+      { id: 2, img: "b.webp", time: 2000 },
+      { id: 3, img: "c.webp", time: 900 },
+      { id: 4, img: "d.webp", time: 2000 },
       { id: 5, img: "e.webp" },
     ];
     return { carouselSlides, print };

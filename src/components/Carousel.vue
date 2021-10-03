@@ -128,6 +128,7 @@ export default {
           if (index === currentSlide.value) {
             if (currentSlide.value == getSlideCount.value) {
               // go to home
+              console.log("done");
               return;
             }
             currentSlide.value += 1;
@@ -139,7 +140,7 @@ export default {
     onMounted(() => {
       getSlideCount.value =
         document.getElementsByClassName("slide-parent").length;
-      currentSlide.value = 1;
+      currentSlide.value = 0;
     });
     return {
       currentSlide,

@@ -9,23 +9,20 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.slide {
-  div {
-    transition: all 0.2s ease-in-out;
-  }
-}
 .slide-enter-from {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 .slide-leave-to {
-  opacity: 0;
+  opacity: 0.7;
 }
-.silde-leave-from,
-.slide-enter-to {
+.slide-enter-to,
+.silde-leave-from {
   opacity: 1;
 }
-.slide-enter-active,
+.slide-enter-active {
+  transition: opacity 1s ease-in;
+}
 .slide-leave-active {
-  transition: opacity 1s ease-in-out;
+  transition: all 1s ease-out;
 }
 </style>
