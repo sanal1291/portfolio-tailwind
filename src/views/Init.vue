@@ -39,11 +39,11 @@ export default {
   },
   setup() {
     const carouselSlides = [
-      { id: 1, img: "bg-1.jpg" },
-      { id: 2, img: "bg-2.jpg", time: 4000 },
-      { id: 3, img: "bg-3.jpg", time: 6000 },
-      { id: 4, img: "bg-4.png" },
-      { id: 5, img: "bg-5.jpg" },
+      { id: 1, img: "a.jpg", time: 2000 },
+      { id: 2, img: "b.jpg", time: 2000 },
+      { id: 3, img: "c.jpg", time: 2000 },
+      { id: 4, img: "d.jpg", time: 1000 },
+      { id: 5, img: "e.jpg" },
     ];
     return { carouselSlides, print };
   },
