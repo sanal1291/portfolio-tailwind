@@ -5,13 +5,7 @@
 </template>
 
 <script>
-export default {
-  props: ["slide"],
-  // eslint-disable-next-line no-unused-vars
-  setup(props, { emit }) {
-    return {};
-  },
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
@@ -20,7 +14,9 @@ export default {
     transition: all 0.2s ease-in-out;
   }
 }
-.slide-enter-from,
+.slide-enter-from {
+  opacity: 0.5;
+}
 .slide-leave-to {
   opacity: 0;
 }

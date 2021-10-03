@@ -14,10 +14,15 @@
       :key="slide.id"
     >
       <slide :slide="slide" :id="slide.id" class="w-full h-full">
-        <div v-if="currentSlide === slide.id" class="slide w-full h-full">
+        <div
+          v-if="currentSlide != 0 && currentSlide === slide.id"
+          class="slide w-full h-full"
+        >
+          <div class="w-full h-full" v-if="cuurentSlide == 0">loading</div>
           <img
+            v-else
             class="w-full h-full object-cover"
-            :src="require(`../assets/${slide.img}`)"
+            :src="require(`../assets/initial/${slide.img}`)"
             :alt="slide.id"
           />
         </div>
@@ -39,11 +44,12 @@ export default {
   },
   setup() {
     const carouselSlides = [
-      { id: 1, img: "a.jpg", time: 2000 },
-      { id: 2, img: "b.jpg", time: 2000 },
-      { id: 3, img: "c.jpg", time: 2000 },
-      { id: 4, img: "d.jpg", time: 1000 },
-      { id: 5, img: "e.jpg" },
+      { id: 0 },
+      { id: 1, img: "a.webp", time: 1000 },
+      { id: 2, img: "b.webp", time: 1000 },
+      { id: 3, img: "c.webp", time: 1000 },
+      { id: 4, img: "d.webp", time: 800 },
+      { id: 5, img: "e.webp" },
     ];
     return { carouselSlides, print };
   },

@@ -37,13 +37,15 @@ export default {
     "timeOut",
     "routeTo",
     "carouselSlides",
+    "lazy",
   ],
   setup(props) {
-    const currentSlide = ref(0);
+    const currentSlide = ref(null);
     const getSlideCount = ref(null);
     const autoPlayEnabled = ref(
       props.autoPlayOn === undefined ? true : props.autoPlayOn
     );
+    const CarouselSlides = ref(props.carouselSlides.value);
     const timeoutDuration = ref(
       props.timeOut != undefined ? props.timeOut : false
     );
@@ -80,12 +82,45 @@ export default {
         nextSlide();
       }, timeoutDuration.value);
     };
+
+    const loadImgs = () => {
+      console.log(props.carouselSlides.length);
+      let promises = [];
+      for (let i = 0; i < props.carouselSlides.length; i++) {
+        promises.push(
+          new Promise((res, rej) => {
+            if (props.carouselSlides[i].id === 0) {
+              res();
+              return;
+            }
+            let url = props.carouselSlides[i].img;
+            let img = new Image();
+            img.onload = () => {
+              res(img);
+            };
+            img.onerror = () => {
+              rej(img);
+            };
+            img.src = require(`../assets/initial/${url}`);
+          })
+        );
+      }
+      Promise.all(promises).then(() => {
+        console.log("all done");
+        currentSlide.value = 1;
+      });
+    };
+
     if (autoPlayEnabled.value) {
       if (timeoutDuration.value) {
         autoPlay();
       }
     }
     watch(currentSlide, (n, o) => {
+      if (currentSlide.value == 0) {
+        loadImgs();
+        return;
+      }
       let index = n;
       if (autoPlayEnabled.value && !timeoutDuration.value) {
         console.log(props.carouselSlides[n - 1].time);
@@ -100,6 +135,7 @@ export default {
         }, props.carouselSlides[n - 1].time ?? 2000);
       }
     });
+
     onMounted(() => {
       getSlideCount.value =
         document.getElementsByClassName("slide-parent").length;
