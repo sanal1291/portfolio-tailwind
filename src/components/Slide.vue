@@ -10,7 +10,7 @@ export default {};
 
 <style lang="scss" scoped>
 .slide-enter-from {
-  opacity: 0.7;
+  opacity: 0;
 }
 .slide-leave-to {
   opacity: 0.7;
@@ -23,6 +23,6 @@ export default {};
   transition: opacity 1s ease-in;
 }
 .slide-leave-active {
-  transition: all 1s ease-out;
+  transition: all 1s ease-in;
 }
 </style>

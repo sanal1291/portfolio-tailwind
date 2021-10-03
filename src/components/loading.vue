@@ -1,12 +1,12 @@
 <template>
   <div class="h-full flex items-center justify-center">
-    <div class="text-center text-green-600">
+    <div class="text-center text-green-600 w-20">
       <svg
         aria-hidden="true"
         focusable="false"
         data-prefix="fas"
         data-icon="fan"
-        class="svg-inline--fa fa-fan fa-w-16 animate-spin fa-4x"
+        class="svg-inline--fa fa-fan fa-w-16 animate-spin"
         role="img"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
