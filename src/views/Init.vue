@@ -3,8 +3,8 @@
     class="carousel relative h-screen w-screen"
     v-slot="{ currentSlide }"
     :carouselSlides="carouselSlides"
-    :pagination="true"
-    :navigation="true"
+    :pagination="false"
+    :navigation="false"
     :autoPlayOn="true"
     routeTo="/home"
   >
