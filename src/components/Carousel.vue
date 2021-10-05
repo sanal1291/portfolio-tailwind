@@ -29,6 +29,7 @@
 /* eslint-disable no-unused-vars */
 import { ref } from "@vue/reactivity";
 import { onMounted, watch } from "vue";
+import { useRouter } from "vue-router";
 export default {
   props: [
     "navigation",
@@ -40,6 +41,7 @@ export default {
     "lazy",
   ],
   setup(props) {
+    const router = useRouter();
     const currentSlide = ref(null);
     const getSlideCount = ref(null);
     const autoPlayEnabled = ref(
@@ -128,7 +130,8 @@ export default {
           if (index === currentSlide.value) {
             if (currentSlide.value == getSlideCount.value) {
               // go to home
-              console.log("done");
+
+              router.push({ name: "Home" });
               return;
             }
             currentSlide.value += 1;
