@@ -1,11 +1,21 @@
 <template>
   <div>
-    <transition name="slide"> <slot /> </transition>
+    <transition :name="transitionAni"> <slot /> </transition>
   </div>
 </template>
 
 <script>
-export default {};
+import { onMounted, ref } from "@vue/runtime-core";
+export default {
+  props: ["transition"],
+  setup(props) {
+    const transitionAni = ref(props.transition);
+    onMounted(() => {
+      console.log(props);
+    });
+    return { transitionAni };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

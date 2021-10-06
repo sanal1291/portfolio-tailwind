@@ -40,7 +40,7 @@ export default {
     "carouselSlides",
     "lazy",
   ],
-  setup(props) {
+  setup(props, { emit }) {
     const router = useRouter();
     const currentSlide = ref(null);
     const getSlideCount = ref(null);
@@ -129,9 +129,8 @@ export default {
         setTimeout(() => {
           if (index === currentSlide.value) {
             if (currentSlide.value == getSlideCount.value) {
-              // go to home
-
-              router.push({ name: "Home" });
+              // switch loading done
+              emit("carouselDone");
               return;
             }
             currentSlide.value += 1;

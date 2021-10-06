@@ -10,8 +10,9 @@
           <a
             v-for="(nav, index) in navs"
             :key="index"
-            :href="nav.url"
+            @click="scrollToView(nav.name)"
             class="
+              capitalize
               py-4
               px-2
               hover:text-green-500
@@ -46,19 +47,17 @@
         </div>
       </div>
     </div>
+    <!-- moible menu list -->
     <div v-show="mobileMenu" class="md:hidden">
       <ul class="">
         <li class="active" v-for="(nav, index) in navs" :key="index">
           <a
-            href="index.html"
-            class="
-              block
-              text-sm
-              px-2
-              py-4
-              text-white
-              bg-green-500
-              font-semibold
+            @click="scrollToView(nav.name)"
+            class="block text-sm px-2 py-4 capitalize"
+            :class="
+              path == nav.id
+                ? 'text-white bg-green-500 font-semibold'
+                : 'hover:bg-green-500 transition duration-300'
             "
             >{{ nav.name }}</a
           >
@@ -89,18 +88,26 @@ export default {
       // });
     });
 
-    onMounted(() => {
-      console.log(window.location.hash);
-    });
+    // onMounted(() => {
+    //   console.log(window.location.hash);
+    //   if (window.location.hash) {
+    //     console.log(true);
+    //   }
+    // });
 
     const toggleMenu = () => {
       mobileMenu.value = !mobileMenu.value;
+    };
+    const scrollToView = (id) => {
+      let el = document.getElementById(id);
+      el.scrollIntoView({ behavior: "smooth", block: "nearest" });
     };
     return {
       navs,
       path,
       toggleMenu,
       mobileMenu,
+      scrollToView,
     };
   },
 };
