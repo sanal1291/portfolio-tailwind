@@ -3,7 +3,7 @@
     <slot :currentSlide="currentSlide" />
 
     <!-- navigation optional-->
-    <div class="navigation" v-if="navigationEnabled">
+    <div class="navigation" v-if="true">
       <div class="toggle-page left">
         <i @click="preSlide" class="fas fa-chevron-left"></i>
       </div>
@@ -13,7 +13,7 @@
     </div>
 
     <!-- pagination optional  -->
-    <div class="pagination" v-if="paginationEnabled">
+    <div class="pagination">
       <span
         @click="goToSlide(index)"
         v-for="(item, index) in getSlideCount"
@@ -86,7 +86,6 @@ export default {
     };
 
     const loadImgs = () => {
-      console.log(props.carouselSlides.length);
       let promises = [];
       for (let i = 0; i < props.carouselSlides.length; i++) {
         promises.push(
@@ -103,12 +102,11 @@ export default {
             img.onerror = () => {
               rej(img);
             };
-            img.src = require(`../assets/initial/${url}`);
+            img.src = require(`../${url}`);
           })
         );
       }
       Promise.all(promises).then(() => {
-        console.log("all done");
         currentSlide.value = 1;
       });
     };
@@ -125,7 +123,6 @@ export default {
       }
       let index = n;
       if (autoPlayEnabled.value && !timeoutDuration.value) {
-        console.log(props.carouselSlides[n - 1].time);
         setTimeout(() => {
           if (index === currentSlide.value) {
             if (currentSlide.value == getSlideCount.value) {
@@ -141,7 +138,7 @@ export default {
 
     onMounted(() => {
       getSlideCount.value =
-        document.getElementsByClassName("slide-parent").length;
+        document.getElementsByClassName("slide-parent").length - 1;
       currentSlide.value = 0;
     });
     return {
@@ -159,8 +156,8 @@ export default {
 
 <style lang="scss" scoped>
 .navigation {
-  height: 100%;
   width: 100%;
+  height: 100%;
   position: absolute;
   display: flex;
   justify-content: space-between;

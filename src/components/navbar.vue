@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white shadow-lg sticky top-0">
+  <nav class="bg-white shadow-lg sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">
         <a href="#" class="flex items-center py-4 px-2">

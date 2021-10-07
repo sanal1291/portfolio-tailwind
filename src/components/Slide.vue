@@ -10,9 +10,7 @@ export default {
   props: ["transition"],
   setup(props) {
     const transitionAni = ref(props.transition);
-    onMounted(() => {
-      console.log(props);
-    });
+    onMounted(() => {});
     return { transitionAni };
   },
 };

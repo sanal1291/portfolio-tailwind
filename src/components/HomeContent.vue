@@ -1,10 +1,16 @@
 <template>
   <div class="bg-green-200">
-    <div class="mx-auto max-w-4xl">
-      <carousel :carouselSlides="carouselSlides" class="relative w-full h-20">
+    <div class="mx-auto max-w-4xl p-2">
+      <carousel
+        :carouselSlides="carouselSlides"
+        :autoPlayOn="true"
+        :timeOut="10000"
+        v-slot="{ currentSlide }"
+        class="relative w-full aspect-w-16 aspect-h-9 overflow-hidden"
+      >
         <div
-          class="absolute top-0 left-0 w-full h-full max-h-full"
-          v-for="slide in carousel"
+          class="slide-parent absolute top-0 left-0 w-full h-full max-h-full"
+          v-for="slide in carouselSlides"
           :key="slide.id"
         >
           <slide :slide="slide" :id="slide.id" class="" transition="slide">
@@ -13,7 +19,7 @@
               <img
                 v-else
                 class="w-full h-full object-cover"
-                :src="require(`../assets/carousel/${slide.img}`)"
+                :src="require(`../${slide.img}`)"
                 :alt="slide.id"
               /></div
           ></slide>
@@ -31,8 +37,9 @@ export default {
   components: { Carousel, Slide, Loading },
   setup() {
     const carouselSlides = [
-      { id: 1, img: "A.webp" },
-      { id: 2, img: "B.webp" },
+      { id: 0 },
+      { id: 1, img: "assets/carousel/A.webp" },
+      { id: 2, img: "assets/carousel/B.webp" },
     ];
     return { carouselSlides };
   },

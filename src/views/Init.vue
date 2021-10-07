@@ -26,7 +26,7 @@
           <img
             v-else
             class="w-full h-full object-cover"
-            :src="require(`../assets/initial/${slide.img}`)"
+            :src="require(`../${slide.img}`)"
             :alt="slide.id"
           />
         </div>
@@ -53,11 +53,11 @@ export default {
   setup() {
     const carouselSlides = [
       { id: 0 },
-      { id: 1, img: "a.webp", time: 2000 },
-      // { id: 2, img: "b.webp", time: 2000 },
-      // { id: 3, img: "c.webp", time: 900 },
-      // { id: 4, img: "d.webp", time: 2000 },
-      // { id: 5, img: "e.webp" },
+      { id: 1, img: "assets/initial/a.webp", time: 1000 },
+      { id: 2, img: "assets/initial/b.webp", time: 1000 },
+      { id: 3, img: "assets/initial/c.webp", time: 1000 },
+      { id: 4, img: "assets/initial/d.webp", time: 1000 },
+      { id: 5, img: "assets/initial/e.webp" },
     ];
     const loadingDone = ref(false);
 
