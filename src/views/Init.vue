@@ -1,5 +1,5 @@
 <template>
-  <home v-if="loadingDone" />
+  <home v-if="loadingDone" class="relative" />
   <carousel
     v-else
     @carouselDone="toHome"
@@ -70,9 +70,9 @@ export default {
 </script>
 
 <style lang="scss" >
-.carousel {
-  .slide-parent {
-    max-height: 100%;
-  }
-}
+// .carousel {
+//   .slide-parent {
+//     max-height: 100%;
+//   }
+// }
 </style>

@@ -1,12 +1,12 @@
 <template>
-  <div class="bg-green-200">
-    <div class="mx-auto max-w-4xl p-2">
+  <div style="background-color: #ebebeb">
+    <div class="mx-auto">
       <carousel
+        class="aspect-w-16 aspect-h-8 overflow-hidden"
         :carouselSlides="carouselSlides"
         :autoPlayOn="true"
         :timeOut="10000"
         v-slot="{ currentSlide }"
-        class="relative w-full aspect-w-16 aspect-h-9 overflow-hidden"
       >
         <div
           class="slide-parent absolute top-0 left-0 w-full h-full max-h-full"
@@ -18,7 +18,7 @@
               <loading v-if="currentSlide == 0"></loading>
               <img
                 v-else
-                class="w-full h-full object-cover"
+                class="w-full object-cover"
                 :src="require(`../${slide.img}`)"
                 :alt="slide.id"
               /></div

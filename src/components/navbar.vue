@@ -1,10 +1,10 @@
 <template>
-  <nav class="bg-white shadow-lg sticky top-0 z-50">
+  <nav class="shadow-lg fixed top-0 z-50 w-full bg-white-300">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex justify-between">
         <a href="#" class="flex items-center py-4 px-2">
           <img src="@/assets/logo.png" alt="Logo" class="h-8 w-8 mr-2" />
-          <span class="font-semibold text-gray-500 text-lg">Title</span>
+          <span class="font-semibold text-black-800 text-lg">Title</span>
         </a>
         <div class="hidden md:flex items-center space-x-1">
           <a
@@ -15,7 +15,7 @@
               capitalize
               py-4
               px-2
-              hover:text-green-500
+              hover:text-black
               transition
               duration-300
               font-semibold
@@ -23,7 +23,7 @@
             :class="
               path == nav.id
                 ? 'text-green-500 border-b-4 border-green-500'
-                : 'text-gray-500'
+                : 'text-black-500'
             "
             >{{ nav.name }}</a
           >
@@ -53,7 +53,7 @@
         <li class="active" v-for="(nav, index) in navs" :key="index">
           <a
             @click="scrollToView(nav.name)"
-            class="block text-sm px-2 py-4 capitalize"
+            class="block text-sm px-2 py-4 capitalize opacity-90 bg-white"
             :class="
               path == nav.id
                 ? 'text-white bg-green-500 font-semibold'

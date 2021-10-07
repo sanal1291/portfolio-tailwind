@@ -1,27 +1,29 @@
 <template>
-  <div>
+  <div class="relative w-full">
     <slot :currentSlide="currentSlide" />
 
     <!-- navigation optional-->
-    <div class="navigation" v-if="true">
-      <div class="toggle-page left">
+    <div class="absolute navigation flex w-full h-full justify-between">
+      <div class="toggle-page my-auto">
         <i @click="preSlide" class="fas fa-chevron-left"></i>
       </div>
-      <div class="toggle-page right">
+      <!-- pagination -->
+      <div class="flex gap-2 p-2 mt-auto">
+        <span
+          class="cursor-pointer w-4 h-4 rounded-full bg-white shadow-sm"
+          @click="goToSlide(index)"
+          v-for="(item, index) in getSlideCount"
+          :key="index"
+          :class="{ 'bg-green-200': index + 1 === currentSlide }"
+        >
+        </span>
+      </div>
+      <!-- end pagination -->
+      <div class="toggle-page my-auto">
         <i @click="nextSlide" class="fas fa-chevron-right"></i>
       </div>
     </div>
-
-    <!-- pagination optional  -->
-    <div class="pagination">
-      <span
-        @click="goToSlide(index)"
-        v-for="(item, index) in getSlideCount"
-        :key="index"
-        :class="{ active: index + 1 === currentSlide }"
-      >
-      </span>
-    </div>
+    <!-- end navigation -->
   </div>
 </template>
 
@@ -156,12 +158,6 @@ export default {
 
 <style lang="scss" scoped>
 .navigation {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   i {
     margin: 2px;
     display: flex;
@@ -173,26 +169,6 @@ export default {
     height: 2rem;
     width: 2rem;
     border-radius: 50%;
-  }
-}
-.pagination {
-  position: absolute;
-  bottom: 1rem;
-  width: 100%;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  span {
-    cursor: pointer;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  }
-  .active {
-    background-color: aqua;
   }
 }
 </style>
