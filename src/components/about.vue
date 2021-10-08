@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5" style="background-color: #e9e9e9">
+  <section class="p-5" style="background-color: #e9e9e9">
     <div class="max-w-4xl mx-auto text-center">
       <div class="text-center text-5xl font-mono">Our Story</div>
       <br />
@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

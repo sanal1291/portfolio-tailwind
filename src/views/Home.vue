@@ -1,6 +1,6 @@
 <template>
-  <div ref="home" class="max-h-full">
-    <navbar />
+  <div id="HomeContent" class="max-h-full">
+    <navbar id="navbar" />
     <home-content id="home" />
     <about id="about"></about>
     <projects id="projects"></projects>

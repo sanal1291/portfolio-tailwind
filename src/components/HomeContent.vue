@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: #ebebeb">
+  <section style="background-color: #ebebeb">
     <div class="mx-auto">
       <carousel
         class="aspect-w-16 aspect-h-8 overflow-hidden"
@@ -26,7 +26,7 @@
         </div>
       </carousel>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

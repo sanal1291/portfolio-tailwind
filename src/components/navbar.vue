@@ -1,17 +1,5 @@
 <template>
-  <nav
-    class="
-      shadow-lg
-      bg-scroll
-      sticky
-      md:fixed
-      top-0
-      z-50
-      w-full
-      bg-white
-      md:bg-transparent
-    "
-  >
+  <nav class="shadow-lg bg-scroll sticky md:fixed top-0 z-50 w-full">
     <div class="max-w-6xl mx-auto px-4 transition-all duration-200">
       <div class="flex justify-between">
         <a href="#" class="flex items-center py-4 px-2">
@@ -27,7 +15,9 @@
               capitalize
               py-4
               px-2
-              hover:text-black
+              hover:text-gray-700
+              border-b-4 border-transparent
+              hover:border-green-500
               transition
               duration-300
               font-semibold
@@ -65,7 +55,16 @@
         <li class="active" v-for="(nav, index) in navs" :key="index">
           <a
             @click="scrollToView(nav.name)"
-            class="block text-sm px-2 py-4 capitalize opacity-90 bg-white"
+            class="
+              block
+              text-sm
+              px-2
+              py-4
+              capitalize
+              opacity-90
+              bg-white
+              hover:
+            "
             :class="
               path == nav.id
                 ? 'text-white bg-green-500 font-semibold'
@@ -80,8 +79,7 @@
 </template>
 
 <script>
-import { computed, ref } from "@vue/reactivity";
-import { useRoute } from "vue-router";
+import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 export default {
   setup() {
@@ -90,25 +88,86 @@ export default {
       { id: 2, name: "about", url: "#" },
       { id: 3, name: "projects", url: "#" },
     ]);
+
     const mobileMenu = ref(false);
+    const path = ref(1);
+
     const toggleMenu = () => {
       mobileMenu.value = !mobileMenu.value;
     };
+
     const scrollToView = (id) => {
       mobileMenu.value = false;
       let el = document.getElementById(id);
-      el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      var headerOffset = 45;
+      var elementPosition = el.getBoundingClientRect().top;
+      var offsetPosition = elementPosition - headerOffset;
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     };
 
     // intersecrion observer to navigation
-    // const path = ref(1)
-    // const observers = ref([])
-    // onMounted(()=>{
-    //   navs.value.forEach(nav=>)
-    // })
-    //
+    const navTransparentLogic = () => {
+      let home = document.getElementById("home");
+      let homeOptions = {
+        rootMargin: "-100px 0px 0px 0px",
+      };
+      const navbar = document.getElementById("navbar");
+      const homeObserver = new IntersectionObserver(function (
+        entries,
+        sectionObserver
+      ) {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            navbar.classList.add("bg-white");
+          } else {
+            navbar.classList.remove("bg-white");
+          }
+        });
+      },
+      homeOptions);
+      homeObserver.observe(home);
+    };
+    //end
+    //     const sections = document.querySelectorAll("section");
+    // const navLi = document.querySelectorAll("nav .container ul li");
+    // window.onscroll = () => {
+    //   var current = "";
+
+    //   sections.forEach((section) => {
+    //     const sectionTop = section.offsetTop;
+    //     if (pageYOffset >= sectionTop - 60) {
+    //       current = section.getAttribute("id"); }
+    //   });
+
+    //   navLi.forEach((li) => {
+    //     li.classList.remove("active");
+    //     if (li.classList.contains(current)) {
+    //       li.classList.add("active");
+    //     }
+    //   });
+    // };
+    // navbar items active logic
+    const navActiveLogic = () => {
+      const sections = document.querySelectorAll("section");
+      window.onscroll = () => {
+        for (let i = 1; i <= sections.length; i++) {
+          if (pageYOffset >= sections[i - 1].offsetTop - 100) {
+            path.value = i;
+          }
+        }
+      };
+    };
+    // end
+    onMounted(() => {
+      navTransparentLogic();
+      navActiveLogic();
+    });
 
     return {
+      path,
       navs,
       toggleMenu,
       mobileMenu,
