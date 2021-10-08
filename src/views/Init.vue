@@ -25,7 +25,7 @@
           <loading v-if="currentSlide == 0"></loading>
           <img
             v-else
-            class="w-full h-full object-cover"
+            class="max-h-full max-w-full w-full h-full object-contain"
             :src="require(`../${slide.img}`)"
             :alt="slide.id"
           />
@@ -53,11 +53,11 @@ export default {
   setup() {
     const carouselSlides = [
       { id: 0 },
-      { id: 1, img: "assets/initial/a.webp", time: 1000 },
-      { id: 2, img: "assets/initial/b.webp", time: 1000 },
+      { id: 1, img: "assets/initial/a.webp", time: 1500 },
+      { id: 2, img: "assets/initial/b.webp", time: 1500 },
       { id: 3, img: "assets/initial/c.webp", time: 1000 },
-      { id: 4, img: "assets/initial/d.webp", time: 1000 },
-      { id: 5, img: "assets/initial/e.webp" },
+      { id: 4, img: "assets/initial/d.webp", time: 1500 },
+      { id: 5, img: "assets/initial/e.webp", time: 1500 },
     ];
     const loadingDone = ref(false);
 
@@ -69,10 +69,8 @@ export default {
 };
 </script>
 
-<style lang="scss" >
-// .carousel {
-//   .slide-parent {
-//     max-height: 100%;
-//   }
-// }
+<style lang="scss" scoped>
+.slide {
+  background-image: url("~@/assets/bg.webp");
+}
 </style>

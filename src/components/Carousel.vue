@@ -5,10 +5,14 @@
     <!-- navigation optional-->
     <div class="absolute navigation flex w-full h-full justify-between">
       <div class="toggle-page my-auto">
-        <i @click="preSlide" class="fas fa-chevron-left"></i>
+        <i
+          @click="preSlide"
+          class="fas fa-chevron-left"
+          v-if="navigationEnabled"
+        ></i>
       </div>
       <!-- pagination -->
-      <div class="flex gap-2 p-2 mt-auto">
+      <div class="flex gap-2 p-2 mt-auto" v-if="paginationEnabled">
         <span
           class="cursor-pointer w-4 h-4 rounded-full bg-white shadow-sm"
           @click="goToSlide(index)"
@@ -20,7 +24,11 @@
       </div>
       <!-- end pagination -->
       <div class="toggle-page my-auto">
-        <i @click="nextSlide" class="fas fa-chevron-right"></i>
+        <i
+          @click="nextSlide"
+          class="fas fa-chevron-right"
+          v-if="navigationEnabled"
+        ></i>
       </div>
     </div>
     <!-- end navigation -->

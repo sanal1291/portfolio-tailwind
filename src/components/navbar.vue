@@ -4,7 +4,9 @@
       <div class="flex justify-between">
         <a href="#" class="flex items-center py-4 px-2">
           <img src="@/assets/logo.png" alt="Logo" class="h-8 w-8 mr-2" />
-          <span class="font-semibold text-black-800 text-lg">Title</span>
+          <span class="font-semibold text-black-800 text-2xl font-mono"
+            >Phosphene Architects</span
+          >
         </a>
         <div class="hidden md:flex items-center space-x-1">
           <a
