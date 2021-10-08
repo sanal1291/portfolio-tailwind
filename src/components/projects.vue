@@ -4,13 +4,42 @@
     <br />
     <div class="bg-black h-0.5 w-40 rounded-full mx-auto"></div>
     <br />
+    <div class="flex justify-center flex-wrap">
+      <div
+        class="w-full p-5 md:w-1/2"
+        v-for="(item, index) in projects"
+        :key="index"
+      >
+        <img
+          class="
+            transition
+            duration-500
+            ease-in-out
+            bg-blue-600
+            transform
+            hover:-translate-y-1
+            hover:scale-110
+          "
+          :src="require(`../${item}`)"
+          alt=""
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   setup() {
-    return {};
+    const projects = [
+      "assets/projects/1.webp",
+      "assets/projects/2.webp",
+      "assets/projects/3.webp",
+      "assets/projects/4.webp",
+      "assets/projects/5.webp",
+      "assets/projects/6.webp",
+    ];
+    return { projects };
   },
 };
 </script>

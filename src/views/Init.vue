@@ -1,5 +1,5 @@
 <template>
-  <home v-if="loadingDone" class="relative" />
+  <home v-if="!loadingDone" class="relative" />
   <carousel
     v-else
     @carouselDone="toHome"

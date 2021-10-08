@@ -1,6 +1,18 @@
 <template>
-  <nav class="shadow-lg fixed top-0 z-50 w-full bg-white-300">
-    <div class="max-w-6xl mx-auto px-4">
+  <nav
+    class="
+      shadow-lg
+      bg-scroll
+      sticky
+      md:fixed
+      top-0
+      z-50
+      w-full
+      bg-white
+      md:bg-transparent
+    "
+  >
+    <div class="max-w-6xl mx-auto px-4 transition-all duration-200">
       <div class="flex justify-between">
         <a href="#" class="flex items-center py-4 px-2">
           <img src="@/assets/logo.png" alt="Logo" class="h-8 w-8 mr-2" />
@@ -76,35 +88,28 @@ export default {
     const navs = ref([
       { id: 1, name: "home", url: "#" },
       { id: 2, name: "about", url: "#" },
+      { id: 3, name: "projects", url: "#" },
     ]);
     const mobileMenu = ref(false);
-    const route = useRoute();
-
-    const path = computed(() => {
-      // return navs.value.farEach((nav) => {
-      //   if (route.path.includes(nav.name)) {
-      //     return path.id;
-      //   }
-      // });
-    });
-
-    // onMounted(() => {
-    //   console.log(window.location.hash);
-    //   if (window.location.hash) {
-    //     console.log(true);
-    //   }
-    // });
-
     const toggleMenu = () => {
       mobileMenu.value = !mobileMenu.value;
     };
     const scrollToView = (id) => {
+      mobileMenu.value = false;
       let el = document.getElementById(id);
       el.scrollIntoView({ behavior: "smooth", block: "nearest" });
     };
+
+    // intersecrion observer to navigation
+    // const path = ref(1)
+    // const observers = ref([])
+    // onMounted(()=>{
+    //   navs.value.forEach(nav=>)
+    // })
+    //
+
     return {
       navs,
-      path,
       toggleMenu,
       mobileMenu,
       scrollToView,
