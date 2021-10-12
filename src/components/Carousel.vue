@@ -142,7 +142,7 @@ export default {
             }
             currentSlide.value += 1;
           }
-        }, props.carouselSlides[n - 1].time ?? 2000);
+        }, props.carouselSlides[n].time ?? 2000);
       }
     });
 

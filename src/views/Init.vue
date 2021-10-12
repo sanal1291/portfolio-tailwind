@@ -21,7 +21,11 @@
         class="w-full h-full"
         transition="slide"
       >
-        <div v-if="currentSlide === slide.id" class="slide w-full h-full">
+        <div
+          v-if="currentSlide === slide.id"
+          class="w-full h-full"
+          :class="slide.id < 2 ? 'slide-1' : 'slide'"
+        >
           <loading v-if="currentSlide == 0"></loading>
           <img
             v-else
@@ -53,11 +57,11 @@ export default {
   setup() {
     const carouselSlides = [
       { id: 0 },
-      { id: 1, img: "assets/initial/a.webp", time: 1500 },
-      { id: 2, img: "assets/initial/b.webp", time: 1500 },
-      { id: 3, img: "assets/initial/c.webp", time: 1000 },
-      { id: 4, img: "assets/initial/d.webp", time: 1500 },
-      { id: 5, img: "assets/initial/e.webp", time: 1500 },
+      { id: 1, img: "assets/initial/a.webp", time: 1300 },
+      { id: 2, img: "assets/initial/b.webp", time: 1300 },
+      { id: 3, img: "assets/initial/c.webp", time: 1300 },
+      { id: 4, img: "assets/initial/d.webp", time: 1000 },
+      { id: 5, img: "assets/initial/e.webp", time: 2000 },
     ];
     const loadingDone = ref(false);
 
@@ -70,7 +74,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.slide-1 {
+  background-image: url("~@/assets/backgrounds/55.webp");
+  background-size: contain;
+}
 .slide {
+  background-size: contain;
   background-image: url("~@/assets/backgrounds/49.webp");
 }
 </style>
