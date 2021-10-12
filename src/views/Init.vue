@@ -71,6 +71,6 @@ export default {
 
 <style lang="scss" scoped>
 .slide {
-  background-image: url("~@/assets/bg.webp");
+  background-image: url("~@/assets/backgrounds/49.webp");
 }
 </style>
