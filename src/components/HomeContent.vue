@@ -5,7 +5,7 @@
         class="aspect-w-16 aspect-h-8 overflow-hidden"
         :carouselSlides="carouselSlides"
         :autoPlayOn="true"
-        :timeOut="15000"
+        :timeOut="3000"
         v-slot="{ currentSlide }"
       >
         <div
