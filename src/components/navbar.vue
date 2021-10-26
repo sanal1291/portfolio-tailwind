@@ -1,6 +1,17 @@
 <template>
   <nav class="shadow-lg bg-scroll sticky md:fixed top-0 z-50 w-full">
-    <div class="max-w-6xl mx-auto px-4 transition-all duration-200">
+    <div class="max-w-6xl mx-auto px-4 transition-all duration-200 relative">
+      <div
+        class="
+          absolute
+          left-0
+          right-0
+          opacity-80
+          text-center text-red-600 text-sm
+        "
+      >
+        SITE UNDER CONSTRUCTION
+      </div>
       <div class="flex justify-between">
         <a href="#" class="flex items-center py-4 px-2">
           <img src="@/assets/logo.png" alt="Logo" class="h-12 max-h-12 mr-2" />
