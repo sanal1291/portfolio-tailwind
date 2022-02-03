@@ -80,6 +80,8 @@ export default {
       "assets/projects/p-3.webp",
       "assets/projects/p-4.webp",
       "assets/projects/p-5.webp",
+      "assets/projects/p-6.webp",
+      "assets/projects/p-7.webp",
     ];
     const ty = "assets/projects/ty.webp";
     return { projectsl, projectsp, ty };
