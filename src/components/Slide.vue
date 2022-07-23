@@ -1,6 +1,8 @@
 <template>
   <div>
-    <transition :name="transitionAni"> <slot /> </transition>
+    <transition :name="transitionAni">
+      <slot />
+    </transition>
   </div>
 </template>
 
@@ -10,7 +12,7 @@ export default {
   props: ["transition"],
   setup(props) {
     const transitionAni = ref(props.transition);
-    onMounted(() => {});
+    onMounted(() => { });
     return { transitionAni };
   },
 };
@@ -20,16 +22,20 @@ export default {
 .slide-enter-from {
   opacity: 0;
 }
+
 .slide-leave-to {
   opacity: 0.7;
 }
+
 .slide-enter-to,
 .silde-leave-from {
   opacity: 1;
 }
+
 .slide-enter-active {
   transition: opacity 1s ease-in;
 }
+
 .slide-leave-active {
   transition: all 1s ease-in;
 }

@@ -1,14 +1,13 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: { content: ['./public/**/*.html', './src/**/*.vue'] },
-  darkMode: 'media', // or 'media' or 'class'
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {},
-  },
-  variants: {
     extend: {},
   },
   plugins: [
 
-    require('@tailwindcss/aspect-ratio'),
-  ],
+    require('@tailwindcss/aspect-ratio'),],
 }
