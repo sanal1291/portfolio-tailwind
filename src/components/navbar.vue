@@ -60,7 +60,7 @@
               path == nav.id
                 ? 'text-white bg-green-500 font-semibold'
                 : 'hover:bg-green-500 transition duration-300'
-            ">{{ nav.name }}</a>
+            ">{{ nav.label }}</a>
         </li>
       </ul>
     </div>
@@ -73,9 +73,10 @@ import { onMounted } from "@vue/runtime-core";
 export default {
   setup() {
     const navs = ref([
-      { id: 1, name: "home", url: "#" },
-      { id: 2, name: "about", url: "#" },
-      { id: 3, name: "projects", url: "#" },
+      { id: 1, label: "home", name: "home", url: "#" },
+      { id: 2, label: "about", name: "about", url: "#" },
+      { id: 3, label: "projects", name: "projects", url: "#" },
+      { id: 4, label: "contact us", name: "contact_us", url: "#" },
     ]);
 
     const mobileMenu = ref(false);
@@ -88,7 +89,7 @@ export default {
     const scrollToView = (id) => {
       mobileMenu.value = false;
       let el = document.getElementById(id);
-      var headerOffset = 45;
+      var headerOffset = 70;
       var elementPosition = el.getBoundingClientRect().top;
       var offsetPosition = elementPosition - headerOffset;
       window.scrollBy({

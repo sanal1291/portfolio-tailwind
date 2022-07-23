@@ -5,47 +5,31 @@
     <div class="bg-black h-0.5 w-40 rounded-full mx-auto"></div>
     <br />
     <div class="flex justify-center flex-wrap">
-      <div
-        class="w-full p-5 md:w-1/2"
-        v-for="(item, index) in projectsl"
-        :key="index"
-      >
-        <img
-          class="
+      <div class="w-full p-5 md:w-1/2" v-for="(item, index) in projectsl" :key="index">
+        <img class="
             transition
             duration-500
             ease-in-out
             bg-blue-600
             transform
             hover:-translate-y-1 hover:scale-110
-          "
-          :src="require(`../${item}`)"
-          alt=""
-        />
+          " :src="require(`../${item}`)" alt="" />
       </div>
     </div>
     <div class="flex justify-center flex-wrap">
-      <div
-        class="w-full p-5 md:w-1/2"
-        v-for="(item, index) in projectsp"
-        :key="index"
-      >
-        <img
-          class="
+      <div class="w-full p-5 md:w-1/2" v-for="(item, index) in projectsp" :key="index">
+        <img class="
             transition
             duration-500
             ease-in-out
             bg-blue-600
             transform
             hover:-translate-y-1 hover:scale-110
-          "
-          :src="require(`../${item}`)"
-          alt=""
-        />
+          " :src="require(`../${item}`)" alt="" />
       </div>
     </div>
 
-    <div class="flex justify-center flex-wrap">
+    <!-- <div class="flex justify-center flex-wrap">
       <div class="w-full p-5 md:w-1/2">
         <img
           class="
@@ -60,7 +44,7 @@
           alt=""
         />
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -83,8 +67,8 @@ export default {
       "assets/projects/p-6.webp",
       "assets/projects/p-7.webp",
     ];
-    const ty = "assets/projects/ty.webp";
-    return { projectsl, projectsp, ty };
+    // const ty = "assets/projects/ty.webp";
+    return { projectsl, projectsp };
   },
 };
 </script>
