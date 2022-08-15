@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>artboxxstudio</title>
+    <style type="text/css">
+        html, body
+        {
+            margin: 0px 0px;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+       
+
+        var url = location.search;
+
+        var paramRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1); 
+            var strs=str.split("&");
+            for(var i=0;i<strs.length;i++){
+                paramRequest[strs[i].split("=")[0]]=strs[i].split("=")[1];
+            }
+        }
+        var id = paramRequest['picId']
+
+        document.write("<iframe type=\"text/javascript\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" src='https://www.artboxxstudio.com/designs/design/3FO3WJUTTGLT/show?kpm=Nnw.6f35aa744ade41e8.7dbcc3c.1660125904133" + id + "'></iframe>")
+        
+    </script>
+
+  
+</body>
+</html>
