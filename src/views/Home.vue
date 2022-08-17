@@ -4,6 +4,17 @@
     <home-content id="home" />
     <about id="about"></about>
     <projects id="projects"></projects>
+    <div class="w-full  h-80 px-4 md:h-screen py-8">
+      <ArtboxIframe></ArtboxIframe>
+    </div>
+    <router-link :to="{ name: '3dview' }">
+      <div class="text-center  w-40 mx-auto">
+        <div class="hover:border-green-500 rounded-full border-gray-900 border-2">
+          View in Fullscreen
+        </div>
+      </div>
+    </router-link>
+    <br />
     <ContactUs id="contact_us"></ContactUs>
     <Footer></Footer>
     <div class="fixed bottom-0 left-0 p-1 w-10 h-10 m-4 text-center rounded-full" style="background-color: #25d366">
@@ -25,6 +36,7 @@ import About from "../components/about.vue";
 import Projects from "../components/projects.vue";
 import ContactUs from "@/components/ContactUs.vue";
 import Footer from "../components/Footer.vue";
+import ArtboxIframe from "@/components/ArtboxIframe.vue";
 export default {
   components: {
     Navbar,
@@ -32,7 +44,8 @@ export default {
     About,
     Projects,
     ContactUs,
-    Footer
+    Footer,
+    ArtboxIframe
   },
   setup() {
     // scrolling logic not working yet cant get scrolltop

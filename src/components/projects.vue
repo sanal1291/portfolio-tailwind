@@ -4,14 +4,6 @@
     <br />
     <div class="bg-black h-0.5 w-40 rounded-full mx-auto"></div>
     <br />
-    <router-link :to="{ name: '3dview' }">
-      <div class=" w-40 mx-auto">
-        <div class="hover:border-green-500 rounded-full border-gray-900 border border-2">
-          View in 3D
-        </div>
-      </div>
-    </router-link>
-    <br />
     <div class="flex justify-center flex-wrap">
       <div class="w-full p-5 md:w-1/2" v-for="(item, index) in projectsl" :key="index">
         <img class="
