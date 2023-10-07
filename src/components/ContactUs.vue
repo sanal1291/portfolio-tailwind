@@ -25,8 +25,7 @@
 export default {
     setup() {
         const cards = [
-            "assets/cards/A.webp",
-            "assets/cards/B.webp",
+            "assets/cards/card.jpg",
         ];
         // const ty = "assets/projects/ty.webp";
         return { cards };
@@ -34,5 +33,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

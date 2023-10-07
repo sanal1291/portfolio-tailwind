@@ -52,11 +52,17 @@
 export default {
   setup() {
     const projectsl = [
-      "assets/projects/1.webp",
-      "assets/projects/2.webp",
-      "assets/projects/3.webp",
-      "assets/projects/4.webp",
-      "assets/projects/5.webp",
+      "assets/projects/1.jpg",
+      "assets/projects/2.jpg",
+      "assets/projects/3.jpg",
+      "assets/projects/4.jpg",
+      "assets/projects/5.jpg",
+      "assets/projects/6.jpg",
+      "assets/projects/7.jpg",
+      "assets/projects/8.jpg",
+      "assets/projects/9.jpg",
+      "assets/projects/10.jpg",
+      "assets/projects/11.jpg",
     ];
     const projectsp = [
       "assets/projects/p-1.webp",
@@ -66,6 +72,8 @@ export default {
       "assets/projects/p-5.webp",
       "assets/projects/p-6.webp",
       "assets/projects/p-7.webp",
+      "assets/projects/p-8.jpg",
+      "assets/projects/p-9.jpg",
     ];
     // const ty = "assets/projects/ty.webp";
     return { projectsl, projectsp };
@@ -73,5 +81,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
