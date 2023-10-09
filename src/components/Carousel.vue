@@ -1,9 +1,12 @@
 <template>
-    <div class="carousel relative w-full aspect-w-16 aspect-h-8">
-        <div class="carousel-images absolute inset-0 flex">
-            <img v-for="(image, index) in images" :key="index" :src="require(`../${image}`)"
-                :class="{ 'opacity-100': index === currentIndex, 'opacity-0': index !== currentIndex }"
-                class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out" />
+    <div class="relative">
+        <div class="carousel relative w-full aspect-w-16 aspect-h-8">
+            <div class="carousel-images absolute inset-0 flex">
+                <img v-for="(image, index) in images" :key="index" :src="require(`../${image}`)"
+                    :class="{ 'opacity-100': index === currentIndex, 'opacity-0': index !== currentIndex }"
+                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out" />
+            </div>
+
         </div>
         <div class="carousel-indicators absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
             <span v-for="(image, index) in images" :key="index"

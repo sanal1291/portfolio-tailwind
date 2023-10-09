@@ -1,0 +1,10 @@
+User-agent: Googlebot-Image
+Disallow: /img/p-2.*.jpg
+Disallow: /img/8.*.jpg
+Disallow: /img/p-1.*.jpg
+Disallow: /img/p-4.*.jpg
+Disallow: /img/p-7.*.jpg
+Disallow: /img/p-5.*.jpg
+Disallow: /img/p-6.*.jpg
+Disallow: /img/p-3.*.jpg
+Disallow: /img/p-8.*.jpg
