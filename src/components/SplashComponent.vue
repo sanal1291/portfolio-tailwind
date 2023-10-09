@@ -24,7 +24,7 @@ export default {
                 setTimeout(() => {
                     showSplash.value = false;
                 }, 500); // This should match the duration of the fade-out transition
-            }, 1000);
+            }, 2000);
         });
 
         return { showSplash, opacityClass };

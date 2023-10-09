@@ -62,7 +62,11 @@ export default {
       "assets/projects/8.jpg",
       "assets/projects/9.jpg",
       "assets/projects/10.jpg",
-      "assets/projects/11.jpg",
+      "assets/projects/A01 (1).jpg",
+      "assets/projects/A04.jpg",
+      "assets/projects/A06.jpg",
+      "assets/projects/A07.jpg",
+      "assets/projects/extra sheet2 before page 11.jpg",
     ];
     const projectsp = [
       "assets/projects/p-1.webp",
